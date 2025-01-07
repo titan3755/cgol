@@ -5,6 +5,7 @@
 // std lib includes
 #include <iostream>
 #include <string>
+#include <vector>
 
 // sdl includes
 #include <SDL.h>
@@ -58,6 +59,9 @@ private:
 	int grid_cell_size;
 	SDL_Color grid_line_color;
 	SDL_Color grid_cell_color;
+	SDL_Color grid_cell_alive_color;
+	std::vector<int> grid_internal_data_vec;
+	int scale_factor;
 };
 
 #endif // RENDER_H

@@ -8,9 +8,11 @@ Render::Render(SDL_Window* window, SDL_Renderer* renderer, int scrn_width, int s
 	this->grid_texture = nullptr;
 	this->grid_rect = { 0, 0, 0, 0 };
 	this->grid_cell_count = 0;
-	this->grid_cell_size = 10;
+	this->grid_cell_size = 5;
 	this->grid_line_color = { 50, 50, 50, 255 };
 	this->grid_cell_color = { 255, 255, 255, 255 };
+	this->grid_cell_alive_color = { 0, 200, 20, 255 };
+    this->grid_internal_data_vec = std::vector<int>();
 }
 
 Render::~Render() {
@@ -68,6 +70,12 @@ void Render::setup_grid() {
 
     // Calculate the total grid cell count
     this->grid_cell_count = (this->scrn_width / this->grid_cell_size) * (this->scrn_height / this->grid_cell_size);
+
+    // set the grid internal data vec acc. to the cell count
+    // the number of elements in the vector will be equal to the cell count - 1
+    for (int i = 0; i < this->grid_cell_count; i++) {
+        this->grid_internal_data_vec.push_back(0);
+    }
 
     // Free the surface now that we have a texture
     SDL_FreeSurface(grid_surface);
