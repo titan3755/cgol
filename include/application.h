@@ -34,6 +34,7 @@ private:
 	SDL_Window* window;
 	SDL_Renderer* renderer;
 	bool is_running;
+	bool game_running;
 };
 
 #endif // APPLICATION_H

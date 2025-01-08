@@ -25,6 +25,12 @@ public:
 
 	// update different components
 	void update_grid();
+	void update_grid_data(int index, int data);
+
+	// misc functions
+	//void zoom_grid(float scale_factor);
+	//void translate_camera(int delta_x, int delta_y);
+	//void reset_camera();
 
 	// cleanup different components
 	void cleanup_grid();
@@ -39,6 +45,7 @@ public:
 	int get_grid_cell_size();
 	SDL_Color get_grid_line_color();
 	SDL_Color get_grid_cell_color();
+	std::vector<int> get_grid_internal_data_vec();
 
 	// setters
 	void set_grid_texture(SDL_Texture* texture);
@@ -47,6 +54,7 @@ public:
 	void set_grid_cell_size(int size);
 	void set_grid_line_color(SDL_Color color);
 	void set_grid_cell_color(SDL_Color color);
+	void set_grid_internal_data_vec(std::vector<int> vec);
 
 private:
 	SDL_Window* window;
@@ -56,12 +64,12 @@ private:
 	SDL_Texture* grid_texture;
 	SDL_Rect grid_rect;
 	int grid_cell_count;
-	int grid_cell_size;
+	float grid_cell_size;
 	SDL_Color grid_line_color;
 	SDL_Color grid_cell_color;
 	SDL_Color grid_cell_alive_color;
 	std::vector<int> grid_internal_data_vec;
-	int scale_factor;
+	float scale_factor;
 };
 
 #endif // RENDER_H
